@@ -18,26 +18,27 @@
   </header>
   <main>
     <section id="app" class="app">
-      <div class="app-prompt">
+      <div id="app-cardLengthForm" class="app-prompt">
         <form id="cardLengthForm" class="prompt">
-          <input type="number" class="prompt-input" name="userCardLength" id="userCardLength"
-            placeholder="Maksimum kaçıncı sayıya kadar kart olmasını istiyorsun?" />
-          <input type="submit" class="prompt-button" value="Start" />
+          <div class="prompt-group">
+            <label for="userCardLength">
+              Oyun içinde görmek istediğiniz en büyük sayıyı belirleyin:
+            </label>
+            <input type="number" class="prompt-input" name="userCardLength" id="userCardLength" />
+          </div>
+          <button type="submit" class="prompt-button">Başlat</button>
         </form>
       </div>
       <div class="app-view">
         <div class="cards-container">
-          <div class="cards">
-
-            <script>
-              
-            </script>
-             
-
-
+          <div class="cards" id="card-table">
           </div>
         </div>
-        <div class="scoreboard-container">Scoreboard</div>
+        <div class="scoreboard-container">
+          <h2>ScoreBoard</h2>
+          <hr>
+          <ul class="card-list" id="scoreBoardList"></ul>
+        </div>
       </div>
     </section>
   </main>

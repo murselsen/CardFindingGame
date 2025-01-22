@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  user-select: none;
 }
 
 ul,
@@ -55,11 +56,12 @@ svg text {
     stroke-width: 0;
   }
 }
-
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
 /* Header */
 .header {
   margin: 50px;
-  display: none;
 }
 /* App */
 .app {
@@ -73,22 +75,97 @@ svg text {
 .app .app-prompt {
   display: flex;
   justify-content: center;
-  display: none;
+  align-items: flex-end;
+}
+
+.app .app-prompt .prompt {
+  display: flex;
+
+  /* gap: 30px; */
+}
+.app .app-prompt .prompt .prompt-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 700px;
+}
+
+.app .app-prompt .prompt .prompt-group label {
+  font-size: 15px;
+  text-transform: uppercase;
+  color: #3866a3;
+  font-weight: 800;
+}
+
+.app .app-prompt .prompt .prompt-group .prompt-input {
+  padding: 20px;
+  border-radius: 5px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border: 5px solid #3866a3;
+  width: 100%;
+  font-size: large;
+  box-shadow: 1px 1px 1px #3866a3;
+  outline: none;
+  color: #3866a3;
+  font-weight: 700;
+}
+
+.app .app-prompt .prompt .prompt-button {
+  padding: 24.5px;
+  border-radius: 5px;
+  font-size: larger;
+  box-shadow: unset;
+  background-color: #3866a3;
+  color: white;
+  cursor: pointer;
+  border: unset;
+  align-self: flex-end;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+.app .app-prompt .prompt .prompt-button:hover,
+.app .app-prompt .prompt .prompt-button:focus {
+  background-color: #3e8ed0;
 }
 
 .app .app-view {
-  display: flex;
+  display: none;
+  /* display: flex; */
   padding-block: 20px;
+  margin: 100px auto;
   gap: 50px;
 }
+
 .app .app-view .cards-container {
   flex: 3;
-  border: 1px solid black;
   padding-inline: 100px;
 }
 
 .app .app-view .scoreboard-container {
   flex: 1;
+}
+
+.app .app-view .scoreboard-container .card-list {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.app .app-view .scoreboard-container .card-list .card-item {
+  width: 80px;
+  height: 80px;
+  font-size: 35px;
+  font-weight: 500;
+  text-align: center;
+  align-content: center;
+  border: 8px groove #3866a3;
+  user-select: none;
 }
 
 .app .app-view .cards-container .cards {
@@ -108,22 +185,22 @@ svg text {
 }
 
 .app .app-view .cards-container .cards .card {
-  border: 10px groove #3866a3;
+  border: 20px groove #3866a3;
   border-radius: 7.5px;
 
   font-weight: bold;
   cursor: pointer;
-  width: 50px;
-  height: 50px;
+  width: 120px;
+  height: 120px;
 
   transform: rotateY(0deg);
-  transition: transform 0.5s;
+  transition: transform 0.1s;
   transform-style: preserve-3d;
   perspective: 1000px;
   position: relative;
 }
 
-.card .face {
+.app .app-view .cards-container .cards .card .face {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -134,25 +211,26 @@ svg text {
   text-align: center;
   line-height: 10px;
   padding: auto;
-  font-size: 30px;
+  font-size: 40px;
   color: black;
 }
 
-.card .face.front {
+.app .app-view .cards-container .cards .card .face.front {
   font-style: oblique;
   transform: rotateY(180deg);
 }
 
-.card .face.back {
+.app .app-view .cards-container .cards .card .face.back {
   color: white;
   background: #3866a3;
 }
 
 .app .app-view .cards-container .cards .card.okey {
-  transform: rotateY(90deg);
+  opacity: 0.5;
   border: 30px groove #00000071;
 }
-.app .app-view .cards-container .cards .card:hover {
+/* .app .app-view .cards-container .cards .card:hover, */
+.app .app-view .cards-container .cards .card.focus {
   font-size: 65px;
   box-sizing: border-box;
   transform: rotateY(180deg);
@@ -160,4 +238,13 @@ svg text {
 .app .app-view .cards-container .cards .card:focus-visible + .card .face.front {
   background-color: red;
   border: 33px solid yellow;
+}
+@media (max-width: 768px) {
+  .app .app-view {
+    flex-direction: column-reverse;
+  }
+  .app .app-view .scoreboard-container {
+    width: 60%;
+    margin: auto;
+  }
 }
